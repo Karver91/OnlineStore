@@ -1,0 +1,20 @@
+{% extends 'products/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'products/css/index.css' %}">
+{% endblock %}
+
+<!-- Content -->
+{% block content %}
+    <section class="store-description">
+        <h2>Online Store</h2>  <!-- static -->
+        <p>Добро пожаловать в наш магазин! Мы предлагаем широкий ассортимент товаров по доступным ценам.  <!-- static -->
+            У нас вы найдете все, что нужно для вашего дома, семьи и хобби.
+            Мы гарантируем высокое качество продукции и быструю доставку.
+            Присоединяйтесь к нашей дружной команде покупателей уже сегодня!</p>
+        <p>Специальное предложение для новых клиентов: получите скидку 10% на ваш первый заказ!  <!-- static -->
+            Не упустите шанс сэкономить на покупках в нашем магазине.</p>
+        <a href="{% url 'OnlineStore_products:catalog' %}" class="start-purchase-btn">Перейти к покупкам</a>
+    </section>
+{% endblock %}

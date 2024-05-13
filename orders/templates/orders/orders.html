@@ -1,0 +1,42 @@
+{% extends 'products/base.html' %}
+{% load static %}
+
+<!-- Custom styles for this template -->
+{% block css %}
+    <link rel="stylesheet" href="{% static 'orders/css/orders.css' %}">
+{% endblock %}
+
+<!-- Page Content -->
+{% block content %}
+<section>
+    <div class="container">
+        <div class="container-header">
+            <h1>Заказы</h1>
+        </div>
+            {% if object_list %}
+            <div>
+                <table class="table">
+                    <thead>
+                    <tr class="table-light">
+                        <th scope="col">#</th>
+                        <th scope="col">Создан</th>
+                        <th scope="col">Статус</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for order in object_list %}
+                        <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>{{ order.created }}</td>
+                            <td>{{ order.get_status_display }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+        <h1 style="text-align: center">У вас еще нет заказов</h1>
+        {% endif %}
+        </div>
+</section>
+{% endblock %}

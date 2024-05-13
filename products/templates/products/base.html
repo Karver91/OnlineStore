@@ -1,0 +1,51 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+
+    <link rel="stylesheet" href="{% static 'products/css/base.css' %}">
+
+    <!-- Custom styles for this template -->
+    {% block css %}
+    {% endblock %}
+</head>
+
+
+<body>
+    <div class="wrapper">
+        <!-- Navigation -->
+        <header>
+            <div id="logo-container">
+                <a id="logo" href="/">Online Store</a> <!-- static -->
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'OnlineStore_products:catalog' %}">Каталог</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'OnlineStore_products:cart' %}">Корзина</a>
+                    <li><a href="{% url 'OnlineStore_orders:orders_list' %}">Заказы</a>
+                    <li><a href="{% url 'OnlineStore_users:profile' %}">{{user.username}}</a>
+                    {% else %}
+                    <li><a href="{% url 'OnlineStore_users:login' %}">Войти</a></li>
+                    <li><a href="{% url 'OnlineStore_users:registration' %}">Регистрация</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Content -->
+        {% block content %}
+        {% endblock %}
+
+        <!-- footer -->
+        <footer>
+            <p>&copy; 2024 <a href="mailto:o.kurmanov91@gmail.com">o.kurmanov91@gmail.com</a> Все права защищены.</p>
+        </footer>
+    </div>
+</body>
+
+</html>

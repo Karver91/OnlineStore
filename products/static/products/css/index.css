@@ -1,0 +1,36 @@
+body {
+    background: url("../img/wallpaper.jpg") no-repeat center top fixed;
+    background-size: cover; /* Растягивает изображение, чтобы оно покрывало весь фон */
+    background-position: center; /* Выравнивает изображение по центру */
+    background-repeat: no-repeat; /* Запрет повтора фонового изображения */
+}
+
+.store-description {
+    max-width: 42%;
+    margin: 1% auto;
+    padding: 1%;
+    text-align: left; /* Выравнивание текста по левому краю */
+    margin-left: 1%; /* Смещение блока влево */
+    background-color: rgba(255, 255, 255, 0.8); /* Прозрачный фон */
+    border-radius: 10px; /* Закругление углов */
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.store-description h2 {
+    margin-top: 0; /* Убираем верхний отступ у заголовка */
+}
+
+.start-purchase-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.start-purchase-btn:hover {
+    background-color: #555;
+}

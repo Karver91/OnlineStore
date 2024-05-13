@@ -1,0 +1,17 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+<body>
+    <div class="container">
+        <div class="container-header">
+            <h3>{{ container_header }}</h3>
+        </div>
+        <p align="center">{{ container_body }}</p>
+        <div class="container-footer">
+            <div class="auth-link">
+                <a href="{% url 'OnlineStore_users:login' %}">Перейти на страницу авторизации</a>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'products/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'products/css/product_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="description-container">
+            <h1>{{ product.0.product.name }}</h1>
+            <hr>
+            <p>{{ product.0.product.price }} руб.</p>
+            <h2>Описание</h2>
+            <p>{{ product.0.product.description }}</p>
+            <h2>Размеры</h2>
+            <form method="post">
+                {% csrf_token %}
+                <label for="size">Выберите размер:</label>
+                <select name="size" id="size">
+                    {% for p in product %}
+                    <option value="{{ p.size }}">{{ p.size }}</option>
+                    {% endfor %}
+                </select>
+                <br>
+                <button class="add-to-cart-btn" type="submit">Добавить в корзину</button>
+            </form>
+        </div>
+        <div class="image-container">
+            <img class="product-image" src="{{ product.0.product.image.url }}" alt="{{ product.0.product.name }}">
+        </div>
+    </div>
+{% endblock %}

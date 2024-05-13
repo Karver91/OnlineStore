@@ -1,0 +1,28 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+<body>
+    <div class="container">
+        <div class="container-header">
+            <h3>{{ title }}</h3>
+        </div>
+
+        <form method="post">
+            {% csrf_token %}
+            {% for f in form %}
+            <div class="form-group">
+                <label for="{{ f.id_for_label }}">{{ f.label }}</label>
+                {{ f }}
+                <div class="form-error">{{ f.errors }}</div>
+            </div>
+            {% endfor %}
+            <button type="submit">Создать аккаунт</button>
+        </form>
+            <div class="container-footer">
+                <div class="auth-link">
+                    <a href="{% url 'OnlineStore_users:login' %}">Уже есть аккаунт? Авторизоваться</a>
+                </div>
+            </div>
+    </div>
+</body>
+{% endblock %}

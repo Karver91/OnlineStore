@@ -1,0 +1,73 @@
+.container {
+    max-width: 70%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 80px;
+    margin-bottom: 100px;
+}
+
+.cart {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.cart th,
+.cart td {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    text-align: left;
+}
+
+.cart th {
+    background-color: #f0f0f0;
+}
+
+.cart td img {
+    max-width: 100px;
+}
+.cart td a {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #333;
+    color: #fff; /* Белый цвет текста */
+    text-decoration: none; /* Убираем подчеркивание ссылки */
+    border-radius: 5px; /* Закругляем углы */
+    transition: background-color 0.3s ease; /* Плавное изменение цвета при наведении */
+}
+
+.cart td a:hover {
+    background-color: #555;
+}
+
+.total {
+    font-weight: bold;
+}
+
+.text-right {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.button.light {
+    background-color: #f0f0f0;
+    color: #333;
+    border: 1px solid #ccc;
+}
+
+
+.button.light:hover {
+    background-color: #d9d6d6;
+}
+
+.button.blue:hover {
+    background-color: #0056b3;
+}

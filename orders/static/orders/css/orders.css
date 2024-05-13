@@ -1,0 +1,73 @@
+.container {
+    width: 50%;
+    margin-top: 100px;
+    margin-bottom: 80px;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.container-header {
+    width: 100%;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.03);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    display: inline-block;
+    padding: 0px;
+    margin: 0px;
+}
+
+/* Стили для таблицы и заголовка */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    border: 1px solid #dee2e6;
+    padding: 8px;
+}
+
+.table th {
+    background-color: #f8f9fa;
+    border-color: #dee2e6;
+}
+
+/* Стили для четных строк */
+.table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Стили для строк при наведении */
+.table tbody tr:hover {
+    background-color: #e9ecef;
+}
+
+/* Стили для заголовков колонок */
+.table th {
+    font-weight: bold;
+    text-align: left;
+}
+
+/* Стили для ячейки с номером заказа */
+.table .order-number {
+    font-weight: bold;
+}
+
+/* Стили для ячейки со статусом */
+.table .status {
+    text-transform: capitalize;
+}
+
+/* Стили для ячейки с датой создания */
+.table .created-date {
+    font-style: italic;
+}
+
+/* Стили для ячейки с общей суммой */
+.table .total {
+    font-weight: bold;
+}

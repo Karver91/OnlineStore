@@ -1,0 +1,38 @@
+{% extends 'products/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'users/css/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="profile-container">
+    <div class="profile-info">
+        <h2>Профиль</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% for f in form %}
+                {% if f.name != 'password' %}
+                    <div class="form-group">
+                        <label for="{{ f.id_for_label }}">{{ f.label }}</label>
+                        {{ f }}
+                        <div>{{ f.errors }}</div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+            {% if form.non_field_errors %}
+                <div class="form-error">{{ form.non_field_errors }}</div>
+            {% endif %}
+        <button type="submit" value="Сохранить">Сохранить</button>
+        </form>
+        <a href="{% url 'OnlineStore_users:logout' %}">Выйти</a>
+    </div>
+    <div class="profile-image">
+        {% if user.photo %}
+        <p ><img src="{{ user.photo.url }}">
+        {% else %}
+        <p ><img src="{{ default_image }}">
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

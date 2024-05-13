@@ -1,0 +1,17 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block content %}
+<body>
+    <div class="container">
+        <div class="container-header">
+            <h3>Продукт успешно добавлен в корзину</h3>
+        </div>
+        <div class="container-footer">
+            <div class="auth-link">
+                <a href="{{ catalog_url }}">Продолжить покупки</a>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}

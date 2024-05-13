@@ -1,0 +1,61 @@
+{% extends 'products/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'products/css/cart.css' %}">
+{% endblock %}
+
+<!-- Content -->
+{% block content %}
+    <div class="container">
+        <h1>Корзина покупок</h1>
+        {% if cart %}
+        <table class="cart">
+            <thead>
+            <tr>
+                <th>Фото</th>
+                <th>Продукт</th>
+                <th>Размер</th>
+                <th>Количество</th>
+                <th>Цена за штуку</th>
+                <th>Цена</th>
+                <th>Удалить товар</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in cart %}
+            {% with product=item.product %}
+                 <tr>
+                     <td>
+                         <img src="{{ product.product.image.url }}">
+                     </td>
+                     <td>{{ product.product }}</td>
+                     <td>{{ product.size }}</td>
+                     <td>{{ item.quantity }}</td>
+                     <td class="num">{{ product.product.price }} руб.</td>
+                     <td class="num">{{ item.get_product_sum }} руб.</td>
+                     <td><a href="{% url 'OnlineStore_products:product_remove' item.id %}">Удалить</a></td>
+                 </tr>
+            {% endwith %}
+            {% endfor %}
+            <tr class="total">
+                <td>Общая стоимость</td>
+                <td colspan="4"></td>
+                <td class="num">{{ cart.get_total_price }} руб.</td>
+            </tr>
+            </tbody>
+        </table>
+        {% else %}
+            <br>
+            <h3>Ваша корзина пуста</h3>
+        {% endif %}
+        <p class="text-right">
+            {% if catalog_url %}
+            <a href="{{ catalog_url }}" class="button light">Продолжить покупки</a>
+            {% else %}
+            <a href="{% url 'OnlineStore_products:catalog' %}" class="button light">Продолжить покупки</a>
+            {% endif %}
+            <a href="{% url 'OnlineStore_orders:order_create' %}" class="button blue">Оформить заказ</a>
+        </p>
+    </div>
+{% endblock %}

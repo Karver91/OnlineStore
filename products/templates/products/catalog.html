@@ -1,0 +1,74 @@
+{% extends 'products/base.html' %}
+{% load static %}
+
+<!-- Custom styles for this template -->
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'products/css/catalog.css' %}">
+{% endblock %}
+
+<!-- Content -->
+
+{% block content %}
+    <div class="content">
+        <!-- Category -->
+        <div class="category-container">
+            <div class="category-header">
+                Категории
+            </div>
+            <div class="category-list">
+                <ul>
+                    {% for category in categories %}
+                        <li><a href="{% url 'OnlineStore_products:category_by_slug' category.slug %}">{{ category.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <div class="advertisement-and-products">
+            <div class="advertisement">
+                <img src="{% static 'products/img/category.jpg' %}" alt="Рекламное изображение">
+            </div>
+
+            <!-- Products -->
+            <h1>{{ title }}</h1>
+            {% if products %}
+                <div class="product-list">
+                    {% for product in products %}
+                    <div class="product-container">
+                        <div class="product">
+                            <a href="{{ product.id }}"><img src="{{ product.image.url }}" alt=""></a>
+                            <h2><a href="{{ product.id }}">{{ product.name }}</a></h2>
+                            <p>{{ product.description }}</p>
+                            <p>{{ product.price }} руб.</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="pagination">
+                    <span class="step-links">
+                        {% if page_obj.has_previous %}
+                            <a href="?page=1">&laquo; первая</a>
+                            <a href="?page={{ page_obj.previous_page_number }}">предыдущая</a>
+                        {% endif %}
+
+                        {% for page in page_obj.paginator.page_range %}
+                            {% if page == page_obj.number %}
+                                <span class="current">{{ page }}</span>
+                            {% elif page >= page_obj.number|add:-2 and page <= page_obj.number|add:2  %}
+                                <a href="?page={{ page }}">{{ page }}</a>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if page_obj.has_next %}
+                            <a href="?page={{ page_obj.next_page_number }}">следующая</a>
+                            <a href="?page={{ page_obj.paginator.num_pages }}">последняя &raquo;</a>
+                        {% endif %}
+                    </span>
+                </div>
+            {% else %}
+                <h1>К сожалению, в данном разделе нет товара =(</h1>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,101 @@
+.profile-container {
+    width: 50%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+.profile-container a {
+    color: #333;
+    text-decoration: none;
+    padding-left: 5%;
+}
+
+.profile-container a:hover {
+    color: #bbb;
+}
+
+.profile-info {
+    width: 50%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.profile-image {
+    width: 50%;
+    padding: 8% 1% 1%;
+    box-sizing: border-box;
+}
+
+.profile-image img {
+    width: 80%;
+}
+
+
+.profile-info h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+
+.profile-info p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.profile-info button {
+    display: block;
+    width: 90%;
+    padding: 10px;
+    margin: 30px auto 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+}
+
+.profile-info button:hover {
+    background-color: #555;
+}
+
+
+/* Формы */
+form {
+    margin-top: 20px;
+    }
+
+.form-group {
+    padding: 5px 20px;
+}
+
+label {
+    display: block;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px 0px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.custom-file-input {
+    width: 100%;
+    padding: 10px 0px;
+}
+
+@media (max-width: 1024px) {
+    .profile-container,
+    .profile-info,
+    .profile-image {
+        width: 100%;
+    }
+}

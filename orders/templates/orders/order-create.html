@@ -1,0 +1,32 @@
+{% extends 'products/base.html' %}
+{% load static %}
+
+<!-- Custom styles for this template -->
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'orders/css/order-create.css' %}">
+{% endblock %}
+
+<!-- Content -->
+
+{% block content %}
+<div class="container">
+    <div class="container-header">
+        <h1>{{ title }}</h1>
+    </div>
+    <div class="container-body">
+        <h4>Адрес доставки</h4>
+            <form method="post">
+                {% csrf_token %}
+                {% for f in form %}
+                    <div class="form-group">
+                        <label for="{{ f.id_for_label }}">{{ f.label }}</label>
+                        {{ f }}
+                        <div class="form-error">{{ f.errors }}</div>
+                    </div>
+                {% endfor %}
+            <button type="submit">Продолжить</button>
+            </form>
+    </div>
+</div>
+{% endblock %}
