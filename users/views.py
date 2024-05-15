@@ -51,24 +51,6 @@ class EmailConfirmationView(TemplateView):
         return super().get(request, *args, **kwargs)
 
 
-# def registration(request):
-#     if request.method == 'POST':
-#         form = UserRegistrationForm(data=request.POST)
-#         if form.is_valid():
-#             user = form.save(commit=False)  # создание объекта без сохранения в БД
-#             user.set_password(form.cleaned_data['password1'])  # set_password шифрует пароль
-#             user.save()
-#             return render(request=request,
-#                           template_name='users/registration_end.html',
-#                           context={'title': 'Регистрация прошла успешно'})
-#     else:
-#         form = UserRegistrationForm()
-#
-#     context = {
-#         'title': 'Создать аккаунт',
-#         'form': form
-#     }
-#     return render(request=request, template_name='users/registration.html', context=context)
 class UserLoginView(LoginView):
     template_name = 'users/login.html'
     form_class = UserLoginForm
@@ -87,27 +69,6 @@ class UserLoginView(LoginView):
         return reverse_lazy('OnlineStore_products:catalog')
 
 
-# def login_user(request):
-#     if request.method == 'POST':
-#         form = UserLoginForm(data=request.POST)
-#         if form.is_valid():
-#             username = form.cleaned_data['username']
-#             password = form.cleaned_data['password']
-#             user = auth.authenticate(username=username, password=password)
-#             if user and user.is_active:
-#                 auth.login(request=request, user=user)
-#                 return redirect('OnlineStore_products:catalog')
-#     else:
-#         form = UserLoginForm()
-#     context = {'title': 'Авторизация', 'form': form}
-#     return render(request=request, template_name='users/login.html', context=context)
-
-
-# def logout_user(request):
-#     logout(request)
-#     return redirect('home')
-
-
 class UserProfileView(LoginRequiredMixin, UpdateView):
     form_class = UserProfileForm
     template_name = 'users/profile.html'
@@ -119,18 +80,3 @@ class UserProfileView(LoginRequiredMixin, UpdateView):
 
     def get_object(self, queryset=None):
         return self.request.user
-
-# @login_required
-# def profile(request):
-#     if request.method == 'POST':
-#         form = UserProfileForm(instance=request.user, data=request.POST, files=request.FILES)
-#         if form.is_valid():
-#             form.save()
-#     else:
-#         form = UserProfileForm(instance=request.user)
-#     context = {
-#         'title': 'Профиль пользователя',
-#         'default_image': settings.DEFAULT_USER_IMAGE,
-#         'form': form
-#     }
-#     return render(request=request, template_name='users/profile.html', context=context)
