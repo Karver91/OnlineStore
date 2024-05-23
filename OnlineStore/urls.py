@@ -18,6 +18,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework.authtoken.views import obtain_auth_token
 
 from products.views import IndexView
 
@@ -26,7 +27,9 @@ urlpatterns = [
     path('', IndexView.as_view(), name='home'),
     path('orders/', include('orders.urls', namespace='OnlineStore_orders')),
     path('products/', include('products.urls', namespace='OnlineStore_products')),
-    path('users/', include('users.urls', namespace='OnlineStore_users'))
+    path('users/', include('users.urls', namespace='OnlineStore_users')),
+    path('api/', include('api.urls', namespace='OnlineStore_api')),
+    path('api-token-auth/', obtain_auth_token)
 ]
 
 admin.site.index_title = 'OnlineStore Админ панель'

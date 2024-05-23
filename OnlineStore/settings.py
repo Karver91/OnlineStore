@@ -36,7 +36,8 @@ ALLOWED_HOSTS = [
 DOMAIN_NAME = 'http://127.0.0.1:8000/'
 
 INTERNAL_IPS = [
-    '*'
+    '127.0.0.1',
+    'localhost'
 ]
 
 CACHES = {
@@ -61,7 +62,9 @@ INSTALLED_APPS = [
     'orders',
     'products',
     'users',
-    'debug_toolbar'
+    'debug_toolbar',
+    'rest_framework',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -170,7 +173,6 @@ EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 
 # Celery
-
 CELERY_BROKER_URL = 'redis://127.0.0.1:6379'
 CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379'
 
@@ -178,3 +180,13 @@ CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379'
 # Yookassa
 YOOKASSA_SECRET_KEY = os.getenv('YOOKASSA_SECRET_KEY')
 YOOKASSA_SHOP_ID = os.getenv('YOOKASSA_SHOP_ID')
+
+
+# Django REST framework
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 100,
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ]
+}
